@@ -39,4 +39,15 @@ class BookController {
         }
     }
     
+    func createBook(title: String, reasonToRead: String, hasBeenRead: Bool) {
+        let book = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
+        books.append(book)
+        saveToPersistanceStore()
+    }
+    
+    func deleteBook(title: String, reasonToRead: String, hasBeenRead: Bool) {
+        let bookToDelete = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
+        var books.(deleteBook)
+        saveToPersistanceStore()
+    }
 }
