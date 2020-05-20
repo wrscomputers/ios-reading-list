@@ -40,14 +40,25 @@ class BookController {
     }
     
     func createBook(title: String, reasonToRead: String, hasBeenRead: Bool) {
-        let book = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
-        books.append(book)
+        let newBook = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
+        books.append(newBook)
         saveToPersistanceStore()
     }
     
     func deleteBook(title: String, reasonToRead: String, hasBeenRead: Bool) {
-        let bookToDelete = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
-        var books.(deleteBook)
-        saveToPersistanceStore()
+        let titleInfo = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
+        guard let indexToDelete = books.index(of: titleInfo) else { return }
+        books.remove(at: indexToDelete)
+    }
+    
+    func updateHasBeenRead(for book: Book) {
+        book.hasBeenRead = !book.hasBeenRead
+    }
+    
+    func updateBook(title: String, reasonToRead: String, hasBeenRead: Bool, newTitle: String, newReasonToRead: String) {
+        let bookInfo = Book(title: title, reasonToRead: reasonToRead, hasBeenRead: hasBeenRead)
+        guard let bookIndexToUpdate = books.index(of: bookInfo) else { return }
+        books.append[bookIndexToUpdate](title: newTitle, reasonToRead: newReasonToRead, hasBeenRead: hasBeenRead)
     }
 }
+
